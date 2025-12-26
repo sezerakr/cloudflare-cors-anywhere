@@ -94,11 +94,11 @@ addEventListener("fetch", async event => {
                     headers: filteredHeaders
                 });
 
-                const response = await fetch(targetUrl, newRequest);
-                const responseHeaders = new Headers(response.headers);
-                const exposedHeaders = [];
-                const allResponseHeaders = {};
-                for (const [key, value] of response.headers.entries()) {
+                let response = await fetch(targetUrl, newRequest);
+                let responseHeaders = new Headers(response.headers);
+                let exposedHeaders = [];
+                let allResponseHeaders = {};
+                for (let [key, value] of response.headers.entries()) {
                     exposedHeaders.push(key);
                     allResponseHeaders[key] = value;
                 }
