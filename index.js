@@ -94,11 +94,11 @@ addEventListener("fetch", async event => {
                     headers: filteredHeaders
                 });
 
-                let response = await fetch(targetUrl, newRequest);
+                const response = await fetch(targetUrl, newRequest);
                 let responseHeaders = new Headers(response.headers);
-                let exposedHeaders = [];
-                let allResponseHeaders = {};
-                for (let [key, value] of response.headers.entries()) {
+                const exposedHeaders = [];
+                const allResponseHeaders = {};
+                for (const [key, value] of response.headers.entries()) {
                     exposedHeaders.push(key);
                     allResponseHeaders[key] = value;
                 }
@@ -118,7 +118,7 @@ addEventListener("fetch", async event => {
                 return new Response(responseBody, responseInit);
 
             } else {
-                const responseHeaders = new Headers();
+                let responseHeaders = new Headers();
                 responseHeaders = setupCORSHeaders(responseHeaders);
 
                 let country = false;
